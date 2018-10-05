@@ -48,3 +48,13 @@ end
 group :development do
   gem 'rails_layout'
 end
+ruby '2.5.1'   # just in case - tell Heroku which Ruby version we need
+group :development, :test do
+  # make sure sqlite3 gem ONLY occurs inside development & test groups
+  gem 'sqlite3' # use SQLite only in development and testing
+end 
+group :production do
+  # make sure the following gems are in your production group:
+  gem 'pg'              # use PostgreSQL in production (Heroku)
+  gem 'rails_12factor'  # Heroku-specific production settings
+end
